@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Autenticando...</title>
+</head>
+<body>
+    <script>
+        // Extrae el token de acceso o el código de autorización de la URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        const hash = window.location.hash.substring(1);
+        const params = new URLSearchParams(hash);
+
+        if (params.get('access_token')) {
+            // Spotify
+            const accessToken = params.get('access_token');
+            localStorage.setItem('spotify_token', accessToken);
+            window.location.href = '/';
+        } else if (code) {
+            // YouTube Music
+            fetch('https://oauth2.googleapis.com/token', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded'
+                },
+                body: new URLSearchParams({
+                    code: code,
+                    client_id: 'TU_YOUTUBE_CLIENT_ID',
+                    client_secret: 'TU_YOUTUBE_CLIENT_SECRET',
+                    redirect_uri: 'http://localhost:8080/callback.html',
+                    grant_type: 'authorization_code'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                localStorage.setItem('youtube_token', data.access_token);
+                localStorage.setItem('youtube_refresh_token', data.refresh_token);
+                window.location.href = '/';
+            })
+            .catch(error => {
+                console.error('Error al obtener el token de YouTube:', error);
+                alert('Error en la autenticación de YouTube Music.');
+                window.location.href = '/';
+            });
+        } else {
+            alert('Error en la autenticación.');
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>

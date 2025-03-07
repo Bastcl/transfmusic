@@ -4,7 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // Configuración de Spotify
-const SPOTIFY_CLIENT_ID = '75b73fe56ae44826803152b90992f922';
+const SPOTIFY_CLIENT_ID = 'TU_SPOTIFY_CLIENT_ID';
 const SPOTIFY_REDIRECT_URI = 'https://bastcl.github.io/transfmusic/callback.html';
 const SPOTIFY_SCOPES = [
     'user-library-read',
@@ -28,7 +28,7 @@ window.onload = () => {
 };
 
 // Configuración de YouTube Music
-const YOUTUBE_CLIENT_ID = '152408418936-68vdbliuu4sq98bec2pvccpnmdsdvvs5.apps.googleusercontent.com';
+const YOUTUBE_CLIENT_ID = 'TU_YOUTUBE_CLIENT_ID';
 const YOUTUBE_REDIRECT_URI = 'https://bastcl.github.io/transfmusic/callback.html';
 
 // Botón de YouTube Music

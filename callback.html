@@ -25,9 +25,9 @@
                 },
                 body: new URLSearchParams({
                     code: code,
-                    client_id: 'TU_YOUTUBE_CLIENT_ID',
-                    client_secret: 'TU_YOUTUBE_CLIENT_SECRET',
-                    redirect_uri: 'http://localhost:8080/callback.html',
+                    client_id: YOUTUBE_CLIENT_ID,
+                    client_secret: YOUTUBE_CLIENT_SECRET,
+                    redirect_uri: YOUTUBE_REDIRECT_URI,
                     grant_type: 'authorization_code'
                 })
             })

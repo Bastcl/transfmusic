@@ -4,20 +4,16 @@ body {
     color: white;
     margin: 0;
     padding: 20px;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
 }
 
 .container {
     max-width: 400px;
     margin: 0 auto;
     text-align: center;
-    flex: 1;
 }
 
 button {
-    background-color: #1DB954; /* Verde de Spotify */
+    background-color: #1DB954;
     border: none;
     padding: 15px 30px;
     margin: 10px;
@@ -36,6 +32,10 @@ button:hover {
     margin-top: 20px;
     font-size: 14px;
     color: #ccc;
+}
+
+#progress-container {
+    margin-top: 20px;
 }
 
 footer {

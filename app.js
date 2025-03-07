@@ -1,6 +1,6 @@
 // Configuración de Spotify
 const SPOTIFY_CLIENT_ID = 'TU_SPOTIFY_CLIENT_ID';
-const SPOTIFY_REDIRECT_URI = 'http://localhost:8080/callback.html';
+const SPOTIFY_REDIRECT_URI = 'https://bastcl.github.io/transfmusic/callback.html';
 const SPOTIFY_SCOPES = [
     'user-library-read',
     'playlist-read-private',
@@ -11,7 +11,7 @@ const SPOTIFY_SCOPES = [
 // Configuración de YouTube Music
 const YOUTUBE_CLIENT_ID = 'TU_YOUTUBE_CLIENT_ID';
 const YOUTUBE_CLIENT_SECRET = 'TU_YOUTUBE_CLIENT_SECRET';
-const YOUTUBE_REDIRECT_URI = 'http://localhost:8080/callback.html';
+const YOUTUBE_REDIRECT_URI = 'https://bastcl.github.io/transfmusic/callback.html';
 
 // Botones de autenticación
 document.getElementById('login-spotify').addEventListener('click', () => {

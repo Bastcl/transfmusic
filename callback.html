@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Autenticando...</title>
+</head>
+<body>
+    <script>
+        const urlParams = new URLSearchParams(window.location.search);
+        const code = urlParams.get('code');
+        const hash = window.location.hash.substring(1);
+        const params = new URLSearchParams(hash);
+
+        if (params.get('access_token')) {
+            // Spotify
+            const accessToken = params.get('access_token');
+            localStorage.setItem('spotify_token', accessToken);
+            window.location.href = '/';
+        } else if (code) {
+            // YouTube Music
+            fetch('https://oauth2.googleapis.com/token', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                body: new URLSearchParams({
+                    code: code,
+                    client_id: 'TU_YOUTUBE_CLIENT_ID',
+                    client_secret: 'TU_YOUTUBE_CLIENT_SECRET',
+                    redirect_uri: 'https://bastcl.github.io/transfmusic/callback.html',
+                    grant_type: 'authorization_code'
+                })
+            })
+            .then(response => response.json())
+            .then(data => {
+                localStorage.setItem('youtube_token', data.access_token);
+                window.location.href = '/';
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                alert('Error en la autenticación.');
+                window.location.href = '/';
+            });
+        } else {
+            alert('Error en la autenticación.');
+            window.location.href = '/';
+        }
+    </script>
+</body>
+</html>
